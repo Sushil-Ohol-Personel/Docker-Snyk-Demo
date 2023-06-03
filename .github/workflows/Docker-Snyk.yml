@@ -27,7 +27,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: purpledobie/hello-tomcat:latest,purpledobie/hello-tomcat:${{steps.vars.outputs.tag}}
+        tags: sushilohol/hello-tomcat:latest,sushilohol/hello-tomcat:${{steps.vars.outputs.tag}}
                
     - name: Snyk container scan
       continue-on-error: true
@@ -36,7 +36,7 @@ jobs:
         DEBUG: true
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        image: purpledobie/hello-tomcat:${{steps.vars.outputs.tag}}
+        image: sushilohol/hello-tomcat:${{steps.vars.outputs.tag}}
         args: --file=Dockerfile  
     - name: Upload result to GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@v1
